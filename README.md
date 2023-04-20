@@ -26,4 +26,4 @@ A user will be able to create a new 'bookmark' for books they are currently read
 
 <h2>Stretch Goals</h2>
 
-Creating an attractive and dynamic UI that can use an a book cover API (e.g. https://openlibrary.org/dev/docs/api/covers) to insert book covers with creating an interface that changes colors based on primary colors of the cover similar to Spotify (e.g. https://lokeshdhakar.com/projects/color-thief/).
+Creating an attractive and dynamic UI that can use a book cover API (e.g. https://openlibrary.org/dev/docs/api/covers) to insert book covers with creating an interface that changes colors based on primary colors of the cover similar to Spotify (e.g. https://lokeshdhakar.com/projects/color-thief/).
