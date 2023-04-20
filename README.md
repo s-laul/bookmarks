@@ -14,7 +14,7 @@ A user will be able to create a new 'bookmark' for books they are currently read
 
 • MongoDB Atlas<br>
 • Express.js<br>
-• React <br>
+• React Native<br>
 • Node.js<br>
 • HTML<br>
 • CSS<br>
