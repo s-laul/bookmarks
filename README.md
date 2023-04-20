@@ -3,7 +3,7 @@
 
 <h2> Project Idea </h2>
 
-This goal of this project is to allow users to create bookmarks of books they are currently reading to highlight important chapters and sections.
+This goal of this project is to allow users to create bookmarks from books they are currently reading to highlight important chapters and sections.
 
 
 <h2>User Story</h2>
