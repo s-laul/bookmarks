@@ -3,7 +3,7 @@
 
 <h2> Project Idea </h2>
 
-This goal of this project is to allow users to create bookmarks from books they are currently reading to highlight important chapters and sections.
+This goal of this project is to allow users to create bookmarks of books they are currently reading to highlight important chapters and sections.
 
 
 <h2>User Story</h2>
@@ -26,7 +26,7 @@ A user will be able to create a new 'bookmark' for books they are currently read
 
 <h2>Stretch Goals</h2>
 
-Creating an attractive and dynamic UI that can use a book cover API (e.g. https://openlibrary.org/dev/docs/api/covers) to insert book covers with creating an interface that changes colors based on primary colors of the cover similar to Spotify (e.g. https://lokeshdhakar.com/projects/color-thief/).
+Creating an attractive and dynamic UI that can use a book cover API (e.g. https://openlibrary.org/dev/docs/api/covers) to insert book covers with creating an interface that changes colors based on primary colors of the cover similar to Spotify (e.g. https://lokeshdhakar.com/projects/color-thief/). Further stretch goal would be to create 'cards' for each note.
 
 ![image](https://user-images.githubusercontent.com/54870014/233503180-ee0bb9e4-cf46-4e9d-8aa1-2f7f382b8138.png)
 
