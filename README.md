@@ -18,3 +18,7 @@ A user will be able to create a new 'bookmarks' for books they are currently rea
 • Node.js<br>
 • HTML<br>
 • CSS<br>
+
+<h2>Wireframe</h2>
+
+<img width="390" alt="Bookmarks concept" src="https://user-images.githubusercontent.com/54870014/233494779-c2e56429-6b85-4e26-a50b-224f8aec8b60.png">
