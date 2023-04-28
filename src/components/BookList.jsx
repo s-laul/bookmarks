@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Text, View} from 'react-native'
+import { StyleSheet, Text, View} from 'react-native'
 import { BookCard } from './BookCard'
 
 
@@ -23,3 +23,4 @@ export const BookList = () => {
       </View>
    )
 }   
+
