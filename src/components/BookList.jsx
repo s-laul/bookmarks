@@ -7,9 +7,10 @@ export const BookList = () => {
    const [book, setBook] = useState({})
 
    const getBook = async () => {
-      const response = await fetch('https://api.bookcover.longitood.com/bookcover?book_title=The+Pale+Blue+Dot&author_name=Carl+Sagan')
-      const data = await response.json()
+      const book = await fetch('https://api.bookcover.longitood.com/bookcover?book_title=harry potter and the half blood prince&author_name=jk rowling')
+      const data = await book.json()
       console.log(data)
+      setBook(data)
    }
 
    useEffect(() => {
@@ -18,7 +19,7 @@ export const BookList = () => {
    return (
       <View>
          <Text>Book List</Text>
-         <BookCard />
+         <BookCard book={book}/>
       </View>
    )
-}
+}   
