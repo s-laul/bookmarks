@@ -25,6 +25,7 @@ function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
+    ...styles.screen,
     backgroundColor: '#fcf9ed'
   };
 
@@ -42,7 +43,9 @@ function App(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-
+  screen: {
+    flex: 1
+  }
 
 });
 

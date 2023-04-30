@@ -1,26 +1,66 @@
 import { useEffect, useState } from 'react'
-import { StyleSheet, Text, View} from 'react-native'
+import { Button, StyleSheet, Text, TextInput, View} from 'react-native'
 import { BookCard } from './BookCard'
 
 
 export const BookList = () => {
    const [book, setBook] = useState({})
+   const [inputTitleState, setInputTitleState] = useState ('')
+   const [inputAuthorState, setInputAuthorState] = useState ('')
 
    const getBook = async () => {
-      const book = await fetch('https://api.bookcover.longitood.com/bookcover?book_title=harry potter and the half blood prince&author_name=jk rowling')
+      const book = await fetch(`https://api.bookcover.longitood.com/bookcover?book_title=${inputTitleState}&author_name= `)
       const data = await book.json()
       console.log(data)
       setBook(data)
    }
 
-   useEffect(() => {
-      getBook()
-   }, [])
+   // useEffect(() => {
+   //    getBook()
+   // }, [])
+
    return (
       <View>
-         <Text>Book List</Text>
+         <Text style={styles.inputLabel}>Search for a Book:</Text>
+         <TextInput
+            onChangeText={setInputTitleState}
+            style={styles.input}
+            placeholder='Title'
+         />
+         {/* <TextInput
+         onChange={setInputAuthorState}
+         style={styles.input}
+         placeholder='Author'
+         /> */}
+         <Button onPress={getBook} title='Search'/>
+
          <BookCard book={book}/>
       </View>
    )
 }   
 
+const styles = StyleSheet.create ({
+   input: {
+      borderWidth: 1,
+      borderColor: 'gray',
+      margin: 10,
+      paddingVertical: 10,
+      paddingStart: 10
+      
+   },
+   inputLabel: {
+      paddingBottom: 0,
+      marginHorizontal: 10,
+      marginTop: 10
+   },
+   button: {
+      borderWidth: 1,
+      borderColor: 'black'
+      
+   },
+   buttonText: {
+      color: 'blue',
+      textAlign: 'center'
+
+   }
+})

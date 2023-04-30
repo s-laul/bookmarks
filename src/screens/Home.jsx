@@ -6,7 +6,6 @@ export const Home = () => {
    return (
       <View>
          <Header />
-         <Text>Home</Text>
          <BookList />
       </View>
    )
