@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button, StyleSheet, Text, TextInput, View} from 'react-native'
-import { BookCard } from './BookCard'
+import { BookCard, CreateCard, CreateBook } from './BookCard'
 
 
 export const BookList = () => {
@@ -34,7 +34,7 @@ export const BookList = () => {
          /> */}
          <Button onPress={getBook} title='Search'/>
 
-         <BookCard book={book}/>
+         <CreateBook />
       </View>
    )
 }   
@@ -55,7 +55,7 @@ const styles = StyleSheet.create ({
    },
    button: {
       borderWidth: 1,
-      borderColor: 'black'
+      borderColor: '#000'
       
    },
    buttonText: {

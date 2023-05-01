@@ -41,11 +41,13 @@ target 'bookmarksapp' do
     :flipper_configuration => flipper_config,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
+    pod 'RNScreens', :path => '../node_modules/react-native-screens'
   )
-
+  
   target 'bookmarksappTests' do
     inherit! :complete
     # Pods for testing
+
   end
 
   post_install do |installer|

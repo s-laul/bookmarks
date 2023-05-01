@@ -15,7 +15,7 @@ const styles = StyleSheet.create ({
       justifyContent: 'center',
    },
    headerText: {
-      color: 'Black',
+      color: '#000',
       fontSize: 32,
       textAlign: 'center'
    }
