@@ -47,19 +47,19 @@ const TabNavigator = () => (
 
 function App(): JSX.Element {
   
-  const isDarkMode = useColorScheme() === 'dark';
-  const backgroundStyle = {
-    ...styles.screen,
-    backgroundColor: '#fcf9ed'
-  };
+  // const isDarkMode = useColorScheme() === 'dark';
+  // const backgroundStyle = {
+  //   ...styles.screen,
+  //   backgroundColor: '#fcf9ed'
+  // };
 
   
 
   return (
-      <ApplicationProvider {...eva} theme={eva.light}>
+      <ApplicationProvider {...eva} theme={eva.dark}>
         <NavigationContainer>
           <TabNavigator />
-          <Text style={{marginTop: 50}} >Bookmarks</Text>
+            
       </NavigationContainer>
     </ApplicationProvider>
   );

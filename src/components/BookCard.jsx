@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { StyleSheet, Image, View, TextInput, KeyboardAvoidingView, Dimensions, useNavigation} from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
+import * as eva from '@eva-design/eva';
 
 import {Card, Button , Text, Title ,Paragraph } from '@ui-kitten/components'
 
