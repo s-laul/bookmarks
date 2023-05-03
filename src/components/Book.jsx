@@ -23,7 +23,7 @@ export const Book = ({route}) => {
       await AsyncStorage.setItem('BOOKS', JSON.stringify(newBooks)).then(() => navigation.navigate('AllBooks'))
    }
     return (
-         <View>
+         <View style={{ backgroundColor: "#222B45", flex: 1}}>
             <Text style={styles.title} category='h1'>
                Books
             </Text>
@@ -31,7 +31,7 @@ export const Book = ({route}) => {
                {singleBook}
             </Text>
             <View style={styles.bottom}>
-               <Button onPress={deleteBook} style={styles.button}/>
+               <Button onPress={deleteBook} style={styles.button}>Delete Book</Button>
             </View>
          </View>
     )
