@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { StyleSheet, Image, View, TextInput, KeyboardAvoidingView, Dimensions, useNavigation} from 'react-native'
+import { StyleSheet, Image, View, TextInput, KeyboardAvoidingView, Dimensions } from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
+import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout} from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 
 import {Card, Button , Text, Title ,Paragraph } from '@ui-kitten/components'
@@ -46,7 +47,7 @@ export const CreateBook = ({}) => {
       const value = await AsyncStorage.getItem('BOOKS')
       const b = value ? JSON.parse(value) : []
       b.push(book)
-      await AsyncStorage.setItem('BOOKS', JSON.stringify(b)).then (() => navigation.navigate('BookmarksList'))
+      await AsyncStorage.setItem('BOOKS', JSON.stringify(b)).then (() => navigation.navigate('AllBooks'))
       setBook('')
    }
 
@@ -57,7 +58,7 @@ export const CreateBook = ({}) => {
             <TextInput
                value={book}
                onChangeText={setBook}
-               style={{ color: '#000', fontSize: 22 }}
+               style={{ color: '#FFF', fontSize: 22 }}
                multiline={true}
                autoFocus
                selectionColor='#000'
@@ -75,7 +76,7 @@ export const CreateBook = ({}) => {
       container: {
          flex: 1,
          backgroundColor: "#222B45",
-         color: "white",
+         color: "FFF",
          padding: 30,
          paddingTop: 80,
 

@@ -9,36 +9,31 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
+import { BookList } from './src/components/BookList';
+import { AllBooks } from './src/components/BookmarksList'
+import { CreateBook } from './src/components/BookCard';
+import { Book } from './src/components/Book';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 // Bottom Tab Navigator --------------------------
 
-const UsersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text category='h1'>USERS</Text>
-  </Layout>
-);
-
-const OrdersScreen = () => (
-  <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Text category='h1'>ORDERS</Text>
-  </Layout>
-);
 
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
     onSelect={index => navigation.navigate(state.routeNames[index])}>
-    <BottomNavigationTab title='USERS'/>
-    <BottomNavigationTab title='ORDERS'/>
+    <BottomNavigationTab title='Add Book'/>
+    <BottomNavigationTab title='All Books'/>
   </BottomNavigation>
 );
 
 const TabNavigator = () => (
   <Navigator tabBar={props => <BottomTabBar {...props} />}>
-    <Screen name='Users' component={UsersScreen}/>
-    <Screen name='Orders' component={OrdersScreen}/>
+    <Screen name='Create' component={CreateBook}/>
+    <Screen name='AllBooks' component={AllBooks}/>
+    <Screen name='BOOKS' component={Book}/>
+
   </Navigator>
 );
 
@@ -59,7 +54,6 @@ function App(): JSX.Element {
       <ApplicationProvider {...eva} theme={eva.dark}>
         <NavigationContainer>
           <TabNavigator />
-            
       </NavigationContainer>
     </ApplicationProvider>
   );
