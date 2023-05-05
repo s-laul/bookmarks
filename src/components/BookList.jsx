@@ -1,66 +1,66 @@
-import { useEffect, useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View} from 'react-native'
-import { BookCard, CreateCard, CreateBook } from './BookCard'
 
+import { useState, useCallback, useEffect } from 'react';
+import { StyleSheet, Image, View, TextInput, KeyboardAvoidingView } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { List , ListItem, Card, Icon, Button, Divider, Text } from '@ui-kitten/components'
 
-export const BookList = () => {
-   const [book, setBook] = useState({})
-   const [inputTitleState, setInputTitleState] = useState ('')
-   const [inputAuthorState, setInputAuthorState] = useState ('')
+export const AllBooks = ({}) => {
+   const [books, setBooks] = useState([])
+   const navigation = useNavigation()
 
-   const getBook = async () => {
-      const book = await fetch(`https://api.bookcover.longitood.com/bookcover?book_title=${inputTitleState}&author_name= `)
-      const data = await book.json()
-      console.log(data)
-      setBook(data)
-   }
+   const getBooks = useCallback(() => {
+      AsyncStorage.getItem('BOOKS').then((books) => {
+        setBooks(JSON.parse(books));
+      });
+    }, []);
+  
+    useFocusEffect(getBooks);
 
-   // useEffect(() => {
-   //    getBook()
-   // }, [])
-
-   return (
-      <View>
-         <Text style={styles.inputLabel}>Search for a Book:</Text>
-         <TextInput
-            onChangeText={setInputTitleState}
-            style={styles.input}
-            placeholder='Title'
-         />
-         {/* <TextInput
-         onChange={setInputAuthorState}
-         style={styles.input}
-         placeholder='Author'
-         /> */}
-         <Button onPress={getBook} title='Search'/>
-
-         <CreateBook />
-      </View>
+   const renderItem = ({ item, index }) => (
+      <ListItem
+        title={<Text category='h4'>{item.title}</Text>}
+        description={<Text category='h5'>{item.description}</Text>}
+        onPress={() => navigation.navigate('BOOKS', {
+         singleBook: item
+        })}
+        >
+      {item.url && (
+      <Image
+        style={styles.image}
+        source={{ uri: item.url }}
+      />
+    )}
+      </ListItem>
    )
-}   
 
-const styles = StyleSheet.create ({
-   input: {
-      borderWidth: 1,
-      borderColor: 'gray',
-      margin: 10,
-      paddingVertical: 10,
-      paddingStart: 10
-      
-   },
-   inputLabel: {
-      paddingBottom: 0,
-      marginHorizontal: 10,
-      marginTop: 10
-   },
-   button: {
-      borderWidth: 1,
-      borderColor: '#000'
-      
-   },
-   buttonText: {
-      color: 'blue',
-      textAlign: 'center'
-
+    return (
+         <View style={{ backgroundColor: "#222B45", flex: 1}}>
+            <Text style={styles.title} category='h1'>
+              All Books
+            </Text>
+            <List
+               style={{ flex: 1, backgroundColor: "#222B45" }}
+               data={books.reverse()}
+               ItemSeparatorComponent={Divider}
+               renderItem={renderItem}
+            />
+         </View>
+    )
    }
-})
+
+   const styles = StyleSheet.create ({
+      container: {
+         fontSize: 20
+      },
+      
+      item: {
+         marginVertical: 4
+      },
+      title: {
+         textAlign: 'center',
+      },
+      notes: {
+         fontSize: 24
+      }
+   })

@@ -1,10 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet, useColorScheme, View } from 'react-native';
-
-// src imports
+import { ScrollView, StyleSheet, useColorScheme, View, SafeAreaView, StatusBar } from 'react-native';
 import { Home } from './src/screens/Home';
-
-// style imports
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
@@ -22,18 +18,17 @@ const { Navigator, Screen } = createBottomTabNavigator();
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
-    onSelect={index => navigation.navigate(state.routeNames[index])}>
+    onSelect={(index) => navigation.navigate(state.routeNames[index])}>
     <BottomNavigationTab title='Add Book'/>
     <BottomNavigationTab title='All Books'/>
   </BottomNavigation>
 );
 
 const TabNavigator = () => (
-  <Navigator tabBar={props => <BottomTabBar {...props} />}>
+  <Navigator screenOptions={{headerShown: false}}  tabBar={props => <BottomTabBar {...props} />}>
     <Screen name='Create' component={CreateBook}/>
     <Screen name='AllBooks' component={AllBooks}/>
     <Screen name='BOOKS' component={Book}/>
-
   </Navigator>
 );
 
@@ -51,19 +46,16 @@ function App(): JSX.Element {
   
 
   return (
-      <ApplicationProvider {...eva} theme={eva.dark}>
-        <NavigationContainer>
-          <TabNavigator />
+    <ApplicationProvider {...eva} theme={eva.dark}>
+
+      <NavigationContainer >
+        <TabNavigator />
       </NavigationContainer>
-    </ApplicationProvider>
+
+  </ApplicationProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1
-  }
 
-});
 
 export default App;
