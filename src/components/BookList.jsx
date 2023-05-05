@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from 'react';
 import { StyleSheet, Image, View, TextInput, KeyboardAvoidingView } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,12 +24,12 @@ export const AllBooks = ({}) => {
          singleBook: item
         })}
         >
-      {item.url && (
-      <Image
-        style={styles.image}
-        source={{ uri: item.url }}
-      />
-    )}
+        {item.url && (
+          <Image
+            style={styles.image}
+            source={{ uri: item.url }}
+          />
+        )}
       </ListItem>
    )
 
@@ -47,20 +46,24 @@ export const AllBooks = ({}) => {
             />
          </View>
     )
-   }
+}
 
-   const styles = StyleSheet.create ({
-      container: {
-         fontSize: 20
-      },
-      
-      item: {
-         marginVertical: 4
-      },
-      title: {
-         textAlign: 'center',
-      },
-      notes: {
-         fontSize: 24
-      }
-   })
+const styles = StyleSheet.create ({
+   container: {
+      fontSize: 20
+   },
+   item: {
+      marginVertical: 4
+   },
+   title: {
+      marginBottom: 20
+   },
+   image: {
+      width: 120,
+      height: 200,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop: 10,
+      marginBottom: 10,
+   },
+})

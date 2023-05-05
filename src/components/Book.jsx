@@ -25,12 +25,12 @@ export const Book = ({route}) => {
    }
     return (
          <View style={styles.container}>
-            <Image source={{ uri: newBook.uri }} style={{ width: 200, height: 200 }} />
+            <Image source={{ uri: singleBook.url }} style={{ width: 200, height: 200 }} />
             <Text style={styles.title} category='h2'>
                Book Title
             </Text>
             <Text style={{ fontSize: 22, margin: 20 }} >
-               {singleBook}
+               {singleBook.title}
             </Text>
             <View style={styles.bottom}>
                <Button 

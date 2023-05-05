@@ -33,7 +33,7 @@ export const CreateBook = ({}) => {
         setInputAuthorState('')
         console.log( {uri: newBook.url} )
         setNewBook(null)
-      //   navigation.navigate('AllBooks')
+        navigation.navigate('AllBooks')
       })
    }
 

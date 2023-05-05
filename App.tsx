@@ -5,8 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
-import { BookList } from './src/components/BookList';
-import { AllBooks } from './src/components/BookmarksList'
+import { AllBooks} from './src/components/BookList';
+// import { AllBooks } from './src/components/BookmarksList'
 import { CreateBook } from './src/components/BookCard';
 import { Book } from './src/components/Book';
 
