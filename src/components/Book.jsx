@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Image, View, Dimensions } from 'react-native'
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,17 +19,19 @@ export const Book = ({route}) => {
   
     useFocusEffect(getBooks);
 
-   const deleteBook = async () => {
-      const newBooks = await books.filter((book) => book !== singleBook)
-      await AsyncStorage.setItem('BOOKS', JSON.stringify(newBooks)).then(() => navigation.navigate('AllBooks'))
-   }
+    const deleteBook = async () => {
+      const newBooks = await books.filter((book) => book.id !== singleBook.id);
+      setBooks(newBooks);
+      const booksString = JSON.stringify(newBooks);
+      await AsyncStorage.setItem('BOOKS', booksString);
+      navigation.navigate('AllBooks');
+    }
+    
+    
     return (
          <View style={styles.container}>
-            <Image source={{ uri: singleBook.url }} style={{ width: 200, height: 200 }} />
+            <Image source={{ uri: singleBook.url }} style={{alignSelf:'center', width: '100%', height: 200, marginTop: -50 }} />
             <Text style={styles.title} category='h2'>
-               Book Title
-            </Text>
-            <Text style={{ fontSize: 22, margin: 20 }} >
                {singleBook.title}
             </Text>
             <View style={styles.bottom}>

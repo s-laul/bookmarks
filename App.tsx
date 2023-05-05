@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ApplicationProvider, BottomNavigation, BottomNavigationTab, Layout, Text } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import { AllBooks} from './src/components/BookList';
-// import { AllBooks } from './src/components/BookmarksList'
 import { CreateBook } from './src/components/BookCard';
 import { Book } from './src/components/Book';
 
@@ -25,7 +24,7 @@ const BottomTabBar = ({ navigation, state }) => (
 );
 
 const TabNavigator = () => (
-  <Navigator screenOptions={{headerShown: false}}  tabBar={props => <BottomTabBar {...props} />}>
+  <Navigator screenOptions={{headerShown: false}} tabBar={props => <BottomTabBar {...props} />}>
     <Screen name='Create' component={CreateBook}/>
     <Screen name='AllBooks' component={AllBooks}/>
     <Screen name='BOOKS' component={Book}/>

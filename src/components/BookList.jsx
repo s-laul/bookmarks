@@ -19,7 +19,6 @@ export const AllBooks = ({}) => {
    const renderItem = ({ item, index }) => (
       <ListItem
         title={<Text category='h4'>{item.title}</Text>}
-        description={<Text category='h5'>{item.description}</Text>}
         onPress={() => navigation.navigate('BOOKS', {
          singleBook: item
         })}
@@ -56,14 +55,14 @@ const styles = StyleSheet.create ({
       marginVertical: 4
    },
    title: {
-      marginBottom: 20
+      paddingTop: 50,
+      textAlign: 'center'
    },
    image: {
       width: 120,
       height: 200,
       marginLeft: 'auto',
       marginRight: 'auto',
-      marginTop: 10,
-      marginBottom: 10,
+      paddingTop: -10
    },
 })

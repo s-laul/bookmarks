@@ -26,14 +26,16 @@ export const CreateBook = ({}) => {
       const value = await AsyncStorage.getItem('BOOKS')
       const books = value ? JSON.parse(value) : []
       books.push(newBookData)
+      const book = { title: inputTitleState }
+      books.push(book)
       await AsyncStorage.setItem('BOOKS', JSON.stringify(books))
       .then (() => {
-        setBook('')
         setInputTitleState('')
         setInputAuthorState('')
         console.log( {uri: newBook.url} )
         setNewBook(null)
         navigation.navigate('AllBooks')
+        setBook('')
       })
    }
 
@@ -55,7 +57,7 @@ export const CreateBook = ({}) => {
             style={{backgroundColor:'white', marginTop: 20}}
             multiline={true}
             autoFocus
-            placeholder='Author'}
+            placeholder='Author'
          /> */}
          {newBook && <Image source={{ uri: newBook.url }} style={{ width: 120, height: 200, marginHorizontal: '30%', marginTop: '15%' }} />}
 
