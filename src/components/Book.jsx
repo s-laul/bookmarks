@@ -4,6 +4,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { List , ListItem, Card, Icon, Button, Divider, Text } from '@ui-kitten/components'
 import { AllBooks } from './BookList';
+import { TextInput } from 'react-native-paper';
 
   
 export const Book = ({route}) => {
@@ -36,7 +37,7 @@ export const Book = ({route}) => {
                   {singleBook.title}
                </Text>
             </View>
-            <View style={styles.bottom}>
+            <View style={{paddingTop: 80}}>
                <Button 
                style={styles.button}
                size='tiny'
@@ -47,6 +48,15 @@ export const Book = ({route}) => {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DELETE 
                </Button>
             </View>
+            <View>
+               <TextInput 
+                  style={styles.bookmark} 
+                  placeholder='Add a Bookmark'
+                  placeholderTextColor={'#acafb9'}
+                  color={'#e3e4e8'}>
+               </TextInput>
+            </View>
+           
          </View>
     )
    }
@@ -55,7 +65,7 @@ export const Book = ({route}) => {
       container: {
          flex: 1,
          backgroundColor: "#222B45",
-         color: "FFF",
+         color: "#FFF",
          paddingTop: 40,
 
 
@@ -71,15 +81,18 @@ export const Book = ({route}) => {
          fontSize: 24
       },
       button: {
-         marginTop: -40,
+         marginTop: -120,
          marginLeft: 250,
-        
-         
 
       },
       bottom: {
          flex: 1,
          justifyContent: 'flex-start',
+      },
+      bookmark: {
+         backgroundColor: '#3e465c',
+         marginHorizontal: '3%',
+         paddingBottom: 50
          
       }
    })

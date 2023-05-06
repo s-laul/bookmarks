@@ -25,7 +25,7 @@ export const AllBooks = ({}) => {
         }
       >
         {item.url && (
-          <View style={styles.itemContainer}>
+          <View style={styles.container}>
             <Image style={styles.image} source={{ uri: item.url }} />
             <Text category='h4' style={styles.titleText}>
                {item.title}
