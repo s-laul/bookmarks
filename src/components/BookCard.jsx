@@ -42,24 +42,24 @@ export const CreateBook = ({}) => {
     return (
       <View style={styles.container}>
          <Header />
-         <Text style={{marginTop: 45, fontSize: 20}}>Search for a Book:</Text>
+         <Text style={{marginTop: 45, fontSize: 18}}>Search for a Book:</Text>
          <TextInput
             value={inputTitleState}
             onChangeText={setInputTitleState}
-            style={{backgroundColor:'white', marginTop: 20}}
+            style={{backgroundColor:'white', marginTop: 20, paddingLeft: 8, paddingTop: 6, paddingBottom: 4, fontSize: 14, borderRadius: 10}}
             multiline={true}
             autoFocus
             placeholder='Title'
          />
-         {/* <TextInput
+         <TextInput
             value={inputAuthorState}
             onChangeText={setInputAuthorState}
-            style={{backgroundColor:'white', marginTop: 20}}
+            style={{backgroundColor:'white', marginTop: 20, paddingLeft: 8, paddingTop: 6, paddingBottom: 4, fontSize: 14, borderRadius: 10}}
             multiline={true}
             autoFocus
             placeholder='Author'
-         /> */}
-         {newBook && <Image source={{ uri: newBook.url }} style={{ width: 120, height: 200, marginHorizontal: '30%', marginTop: '15%' }} />}
+         />
+         {newBook && <Image source={{ uri: newBook.url }} style={{ width: 120, height: 200, marginHorizontal: '30%', marginTop: '8%' }} />}
 
          <KeyboardAvoidingView style={styles.bottom}>
             <Button style={styles.button} onPress={saveBook}>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create ({
       marginBottom: 10
    },
    button: {
-      marginBottom: 30,
+      marginBottom: 10,
+      marginHorizontal: 80
    }
 })

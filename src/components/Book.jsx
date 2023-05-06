@@ -41,19 +41,19 @@ export const Book = ({route}) => {
                <Button 
                style={styles.button}
                size='tiny'
-               appearance='ghost' 
+               appearance='outline' 
                onPress={deleteBook} 
                status='danger'
                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DELETE 
+               DELETE 
                </Button>
             </View>
             <View>
                <TextInput 
                   style={styles.bookmark} 
                   placeholder='Add a Bookmark'
-                  placeholderTextColor={'#acafb9'}
-                  color={'#e3e4e8'}>
+                  placeholderTextColor={'#acafb9'}>
+      
                </TextInput>
             </View>
            
@@ -82,7 +82,7 @@ export const Book = ({route}) => {
       },
       button: {
          marginTop: -120,
-         marginLeft: 250,
+         marginLeft: 300,
 
       },
       bottom: {
@@ -92,7 +92,7 @@ export const Book = ({route}) => {
       bookmark: {
          backgroundColor: '#3e465c',
          marginHorizontal: '3%',
-         paddingBottom: 50
+         paddingBottom: 150
          
       }
    })
