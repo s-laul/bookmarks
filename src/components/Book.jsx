@@ -30,17 +30,22 @@ export const Book = ({route}) => {
     
     return (
          <View style={styles.container}>
-            <Image source={{ uri: singleBook.url }} style={{alignSelf:'center', width: '100%', height: 200, marginTop: -50 }} />
-            <Text style={styles.title} category='h2'>
-               {singleBook.title}
-            </Text>
+            <View>
+               <Image source={{ uri: singleBook.url }} style={{alignSelf:'center', width: '100%', height: 200, marginTop: -50 }} />
+               <Text style={styles.title} category='h2'>
+                  {singleBook.title}
+               </Text>
+            </View>
             <View style={styles.bottom}>
                <Button 
+               style={styles.button}
+               size='tiny'
                appearance='ghost' 
                onPress={deleteBook} 
                status='danger'
-               
-               style={styles.button}>Delete Book</Button>
+               >
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DELETE 
+               </Button>
             </View>
          </View>
     )
@@ -51,7 +56,7 @@ export const Book = ({route}) => {
          flex: 1,
          backgroundColor: "#222B45",
          color: "FFF",
-         paddingTop: 50,
+         paddingTop: 40,
 
 
          width: Dimensions.get('window').width
@@ -66,14 +71,15 @@ export const Book = ({route}) => {
          fontSize: 24
       },
       button: {
-         marginVertical: 40,
-         marginHorizontal: 124,
+         marginTop: -40,
+         marginLeft: 250,
+        
          
 
       },
       bottom: {
          flex: 1,
-         justifyContent: 'flex-end',
-         marginBottom: 30
+         justifyContent: 'flex-start',
+         
       }
    })

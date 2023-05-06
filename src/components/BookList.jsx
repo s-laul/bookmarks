@@ -16,40 +16,45 @@ export const AllBooks = ({}) => {
   
     useFocusEffect(getBooks);
 
-   const renderItem = ({ item, index }) => (
+    const renderItem = ({ item, index }) => (
       <ListItem
-        title={<Text category='h4'>{item.title}</Text>}
-        onPress={() => navigation.navigate('BOOKS', {
-         singleBook: item
-        })}
-        >
+        onPress={() =>
+          navigation.navigate('BOOKS', {
+            singleBook: item
+          })
+        }
+      >
         {item.url && (
-          <Image
-            style={styles.image}
-            source={{ uri: item.url }}
-          />
-        )}
-      </ListItem>
-   )
-
-    return (
-         <View style={{ backgroundColor: "#222B45", flex: 1}}>
-            <Text style={styles.title} category='h1'>
-              All Books
+          <View style={styles.itemContainer}>
+            <Image style={styles.image} source={{ uri: item.url }} />
+            <Text category='h4' style={styles.titleText}>
+               {item.title}
             </Text>
-            <List
-               style={{ flex: 1, backgroundColor: "#222B45" }}
-               data={books.reverse()}
-               ItemSeparatorComponent={Divider}
-               renderItem={renderItem}
-            />
          </View>
-    )
-}
+         )}
+    </ListItem>
+    );
+  
+    return (
+      <View style={{ backgroundColor: '#222B45', flex: 1 }}>
+        <View style={{paddingLeft: '30%', paddingTop: '15%',flexDirection: 'row', paddingBottom: '10%', alignItems: 'center',}}>
+      <Text style={{fontSize: 20, color: '#fff'}}>All Books &nbsp;</Text> 
+      <Image style={{height: '160%', width: '14%'}} source={require('../../public/Images/bookmark.png')}/>
+   </View>
+        <List
+          style={{ flex: 1, backgroundColor: '#222B45' }}
+          data={books.reverse()}
+          renderItem={renderItem}
+        />
+      </View>
+    );
+  };
 
 const styles = StyleSheet.create ({
    container: {
-      fontSize: 20
+      fontSize: 20,
+      alignItems: 'center'
+   
    },
    item: {
       marginVertical: 4
@@ -61,8 +66,7 @@ const styles = StyleSheet.create ({
    image: {
       width: 120,
       height: 200,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      paddingTop: -10
+      alignSelf: 'center',
+      paddingTop: -10,
    },
 })
