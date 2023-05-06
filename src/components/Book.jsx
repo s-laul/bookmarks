@@ -7,65 +7,86 @@ import { AllBooks } from './BookList';
 import { TextInput } from 'react-native-paper';
 
   
-export const Book = ({route}) => {
-   const [books, setBooks] = useState([])
-   const {singleBook} = route.params
-   const navigation = useNavigation()
-
+export const Book = ({ route }) => {
+   const [books, setBooks] = useState([]);
+   const [bookmark, setBookmark] = useState('');
+   const { singleBook } = route.params;
+   const navigation = useNavigation();
+ 
    const getBooks = useCallback(() => {
-      AsyncStorage.getItem('BOOKS').then((books) => {
-        setBooks(JSON.parse(books));
-      });
-    }, []);
-  
-    useFocusEffect(getBooks);
-
-    const deleteBook = async () => {
-      const newBooks = await books.filter((book) => book.id !== singleBook.id);
-      setBooks(newBooks);
-      const booksString = JSON.stringify(newBooks);
-      await AsyncStorage.setItem('BOOKS', booksString);
-      navigation.navigate('AllBooks');
-    }
-    
-    
-    return (
-         <View style={styles.container}>
-            <View>
-               <Image source={{ uri: singleBook.url }} style={{alignSelf:'center', width: '100%', height: 200, marginTop: -50 }} />
-               <Text style={styles.title} category='h2'>
-                  {singleBook.title}
-               </Text>
-            </View>
-            <View style={{paddingTop: 80}}>
-               <Button 
-               style={styles.button}
-               size='tiny'
-               appearance='outline' 
-               onPress={deleteBook} 
-               status='danger'
-               >
-               DELETE 
-               </Button>
-            </View>
-            <View>
-               <TextInput 
-                  style={styles.bookmark} 
-                  placeholder='Add a Bookmark'
-                  placeholderTextColor={'#acafb9'}>
-      
-               </TextInput>
-            </View>
-           
-         </View>
-    )
-   }
-
+     AsyncStorage.getItem('BOOKS').then((books) => {
+       setBooks(JSON.parse(books));
+     });
+   }, []);
+ 
+   useFocusEffect(getBooks);
+ 
+   const deleteBook = async () => {
+     const newBooks = await books.filter((book) => book.title !== singleBook.title);
+     setBooks(newBooks);
+     const booksString = JSON.stringify(newBooks);
+     await AsyncStorage.setItem('BOOKS', booksString);
+     navigation.navigate('AllBooks');
+   };
+ 
+   const saveBookmark = async () => {
+     const updatedBooks = books.map((book) => {
+       if (book.title === singleBook.title) {
+         return {
+           ...book,
+           bookmark: bookmark
+         };
+       }
+       return book;
+     });
+ 
+     setBooks(updatedBooks);
+     const booksString = JSON.stringify(updatedBooks);
+     await AsyncStorage.setItem('BOOKS', booksString);
+   };
+ 
+   return (
+     <View style={styles.container}>
+       <View>
+         <Image source={{ uri: singleBook.url }} style={{ alignSelf: 'center', width: '100%', height: 200, marginTop: -50 }} />
+       </View>
+       <View style={{ paddingTop: 60 }}>
+         <Button
+           style={styles.button}
+           size='tiny'
+           appearance='outline'
+           onPress={deleteBook}
+           status='danger'
+         >
+           DELETE
+         </Button>
+       </View>
+       <View>
+         <TextInput
+           style={styles.bookmark}
+           placeholder='Add a Bookmark'
+           placeholderTextColor={'#fff'}
+           multiline
+           value={bookmark}
+           onChangeText={setBookmark}
+         />
+         <Button
+           style={{ marginHorizontal: 120, marginTop: 10 }}
+           appearance='filled'
+           onPress={saveBookmark}
+         >
+           Save
+         </Button>
+       </View>
+ 
+     </View>
+   );
+ };
+ 
    const styles = StyleSheet.create ({
       container: {
          flex: 1,
          backgroundColor: "#222B45",
-         color: "#FFF",
          paddingTop: 40,
 
 
@@ -76,12 +97,14 @@ export const Book = ({route}) => {
       },
       title: {
          textAlign: 'center',
+         color: '#fff',
+         marginTop: 12
       },
       notes: {
          fontSize: 24
       },
       button: {
-         marginTop: -120,
+         marginTop: -90,
          marginLeft: 300,
 
       },
@@ -90,9 +113,15 @@ export const Book = ({route}) => {
          justifyContent: 'flex-start',
       },
       bookmark: {
-         backgroundColor: '#3e465c',
-         marginHorizontal: '3%',
-         paddingBottom: 150
+         backgroundColor: '#acafb9',
+         marginHorizontal: '4%',
+         marginTop: '4%',
+         paddingBottom: 200,
+         borderTopLeftRadius: 12,
+         borderTopRightRadius: 12,
+         borderRadius: 15,
+         color: '#FFF'
          
+      
       }
    })

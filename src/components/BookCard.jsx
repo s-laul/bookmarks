@@ -26,7 +26,7 @@ export const CreateBook = ({}) => {
       const value = await AsyncStorage.getItem('BOOKS')
       const books = value ? JSON.parse(value) : []
       books.push(newBookData)
-      const book = { title: inputTitleState }
+      const book = { title: inputTitleState, author: inputAuthorState }
       books.push(book)
       await AsyncStorage.setItem('BOOKS', JSON.stringify(books))
       .then (() => {
@@ -51,15 +51,16 @@ export const CreateBook = ({}) => {
             autoFocus
             placeholder='Title'
          />
-         <TextInput
+         {/* <TextInput
             value={inputAuthorState}
             onChangeText={setInputAuthorState}
             style={{backgroundColor:'white', marginTop: 20, paddingLeft: 8, paddingTop: 6, paddingBottom: 4, fontSize: 14, borderRadius: 10}}
             multiline={true}
             autoFocus
             placeholder='Author'
-         />
-         {newBook && <Image source={{ uri: newBook.url }} style={{ width: 120, height: 200, marginHorizontal: '30%', marginTop: '8%' }} />}
+         /> */}
+         {newBook && <Image source={{ uri: newBook.url }} style={{ width: 120, height: 200, marginHorizontal: '30%', marginTop: '15%' }} />}
+
 
          <KeyboardAvoidingView style={styles.bottom}>
             <Button style={styles.button} onPress={saveBook}>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create ({
    container: {
       flex: 1,
       backgroundColor: "#222B45",
-      color: "FFF",
+      color: "#FFF",
       padding: 30,
       paddingTop: 50,
       width: Dimensions.get('window').width
